@@ -1,0 +1,7 @@
+/*C6*/SET SCHEMA PUBLIC
+create table importante( a int )
+/*C7*/SET SCHEMA PUBLIC
+drop table importante
+DISCONNECT
+/*C8*/SET SCHEMA PUBLIC
+DISCONNECT
