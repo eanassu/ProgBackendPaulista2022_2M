@@ -25,6 +25,7 @@ public class DaoFuncionario {
 			connection = DriverManager.getConnection(url,user,password);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -40,6 +41,7 @@ public class DaoFuncionario {
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} 
 	}
 	
@@ -55,6 +57,7 @@ public class DaoFuncionario {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			throw new RuntimeException(e);
 		} 
 		
 		return result;
