@@ -30,5 +30,7 @@
 	} 
 	%>
 </table>
+<br/>
+<a href='/Projeto'>voltar</a>
 </body>
 </html>
