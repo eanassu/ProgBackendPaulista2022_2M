@@ -24,7 +24,15 @@
 		<td><fmt:formatNumber value="${funcionario.salario}" 
 		type="currency" />		
 		</td>
-		<td>${funcionario.email}</td>
+		<td>
+		  <c:if test="${not empty funcionario.email}">
+	        <a href="mailto:${funcionario.email}">${funcionario.email}</a>
+		  </c:if>
+		  <c:if test="${empty funcionario.email}">
+	        e-mail não informado
+		  </c:if>
+		  
+		</td>
 	</tr>
   </c:forEach>
 </table>
