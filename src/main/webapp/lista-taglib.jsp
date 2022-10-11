@@ -13,7 +13,7 @@
 <jsp:useBean id="dao" class="br.vemprafam.dao.DaoFuncionario"/>
 <table border=1>
   <tr>
-    <th>RE</th><th>nome</th><th>data adm.</th><th>salário</th>
+    <th>RE</th><th>nome</th><th>data adm.</th><th>salário</th><th>e-mail</th>
   </tr>
   <c:forEach var="funcionario" items="${dao.lista}" varStatus="id">
 	<tr bgcolor="#${id.count%2==0?'aaee88':'ffffff'}">
@@ -24,6 +24,7 @@
 		<td><fmt:formatNumber value="${funcionario.salario}" 
 		type="currency" />		
 		</td>
+		<td>${funcionario.email}</td>
 	</tr>
   </c:forEach>
 </table>

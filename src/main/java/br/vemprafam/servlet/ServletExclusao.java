@@ -33,7 +33,7 @@ public class ServletExclusao extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int re = Integer.parseInt(request.getParameter("re"));
 		DaoFuncionario dao = new DaoFuncionario();
-		dao.excluirFuncionario(new Funcionario(re,null,null,0));
+		dao.excluirFuncionario(new Funcionario(re,null,null,0,null));
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");

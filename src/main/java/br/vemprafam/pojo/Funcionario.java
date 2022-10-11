@@ -7,16 +7,22 @@ public class Funcionario {
 	private String nome;
 	private Date dataAdmissao;
 	private double salario;
+	private String email;
 	public Funcionario() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	public Funcionario(int re, String nome, Date dataAdmissao, double salario) {
+	public Funcionario(int re, String nome, Date dataAdmissao, double salario, String email) {
 		super();
 		this.re = re;
 		this.nome = nome;
 		this.dataAdmissao = dataAdmissao;
 		this.salario = salario;
+		this.email = email;
+	}
+	@Override
+	public String toString() {
+		return "Funcionario [re=" + re + ", nome=" + nome + ", dataAdmissao=" + dataAdmissao + ", salario=" + salario
+				+ ", email=" + email + "]";
 	}
 	public int getRe() {
 		return re;
@@ -42,10 +48,10 @@ public class Funcionario {
 	public void setSalario(double salario) {
 		this.salario = salario;
 	}
-	@Override
-	public String toString() {
-		return "Funcionario [re=" + re + ", nome=" + nome + ", dataAdmissao=" + dataAdmissao + ", salario=" + salario
-				+ "]";
+	public String getEmail() {
+		return email;
 	}
-	
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

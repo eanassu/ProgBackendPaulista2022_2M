@@ -44,14 +44,15 @@ public class ServletLista extends HttpServlet {
 		out.println("<body>");
 		out.println("<table border='1'>");
 		out.println("<tr>\n"
-				+ "<th>RE</th><th>nome</th><th>data adm.</th><th>salário</th>\r\n"
+				+ "<th>RE</th><th>nome</th><th>data adm.</th><th>salário</th><th>e-mail</th>\r\n"
 				+ "</tr>");
 		for( Funcionario f: lista ) {
 			out.println("<tr>");
 			out.println("<td>"+f.getRe()+"</td>"+
 			            "<td>"+f.getNome()+"</td>"+
 					    "<td>"+f.getDataAdmissao()+"</td>"+
-			            "<td>"+f.getSalario()+"</td>");
+			            "<td>"+f.getSalario()+"</td>"+
+			            "<td>"+f.getEmail()+"</td>"	);
 			out.println("</tr>");
 		}
 		out.println("</table>");

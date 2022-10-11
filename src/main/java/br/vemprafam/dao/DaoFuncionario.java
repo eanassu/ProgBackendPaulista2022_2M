@@ -32,12 +32,13 @@ public class DaoFuncionario {
 	public void inserirFuncionario( Funcionario funcionario ) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(
-					"INSERT INTO FUNCIONARIOS VALUES(?,?,?,?)");
+					"INSERT INTO FUNCIONARIOS VALUES(?,?,?,?,?)");
 			pstmt.setInt(1, funcionario.getRe());
 			pstmt.setString(2, funcionario.getNome());
 			pstmt.setDate(3, 
 			new java.sql.Date(funcionario.getDataAdmissao().getTime()));
 			pstmt.setDouble(4, funcionario.getSalario());
+			pstmt.setString(5, funcionario.getEmail());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -53,7 +54,10 @@ public class DaoFuncionario {
 			ResultSet rs = pstmt.executeQuery();
 			while( rs.next() ) {
 				result.add(new Funcionario(rs.getInt(1),
-						rs.getString(2), rs.getDate(3), rs.getDouble(4)));
+						                   rs.getString(2), 
+						                   rs.getDate(3), 
+						                   rs.getDouble(4),
+						                   rs.getString(5)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -94,7 +98,8 @@ public class DaoFuncionario {
 				return new Funcionario(rs.getInt(1),
 						               rs.getString(2),
 						               rs.getDate(3),
-						               rs.getDouble(4));
+						               rs.getDouble(4),
+						               rs.getString(5));
 			} else {
 				return new Funcionario();
 			}
@@ -108,12 +113,18 @@ public class DaoFuncionario {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(
 					"UPDATE FUNCIONARIOS "
-					+ "SET nome=?,dataAdmissao=?,salario=? WHERE re=?");
+					+ "SET nome=?,"
+					+ "dataAdmissao=?,"
+					+ "salario=?,"
+					+ "email=? "
+					+ "WHERE re=?");
 			pstmt.setString(1, funcionario.getNome());
 			pstmt.setDate(2, 
 			new java.sql.Date(funcionario.getDataAdmissao().getTime()));
 			pstmt.setDouble(3, funcionario.getSalario());
-			pstmt.setInt(4, funcionario.getRe());
+			pstmt.setString(4, funcionario.getEmail());
+			pstmt.setInt(5, funcionario.getRe());
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
