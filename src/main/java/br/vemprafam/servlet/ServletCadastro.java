@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,15 +47,16 @@ public class ServletCadastro extends HttpServlet {
 		double salario = Double.parseDouble(request.getParameter("salario"));
 		String email = request.getParameter("email");
 		DaoFuncionario dao = new DaoFuncionario();
-		dao.inserirFuncionario(
-				new Funcionario(re,nome,dataAdmissao,salario,email));
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("Funcionário cadastrado<br/>");
-		out.println("<a href='/Projeto'>voltar</a>");
-		out.println("</body>");
-		out.println("</html>");
+		if (dao.inserirFuncionario(
+				new Funcionario(re,nome,dataAdmissao,salario,email))) {
+			RequestDispatcher rd = 
+			request.getRequestDispatcher("/funcionario-adicionado.jsp");
+			rd.forward(request, response);
+		} else {
+			RequestDispatcher rd = 
+			request.getRequestDispatcher("/funcionario-nao-adicionado.jsp");
+			rd.forward(request, response);
+		}
 	}
 
 	/**

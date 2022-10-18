@@ -29,7 +29,7 @@ public class DaoFuncionario {
 		}
 	}
 
-	public void inserirFuncionario( Funcionario funcionario ) {
+	public boolean inserirFuncionario( Funcionario funcionario ) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(
 					"INSERT INTO FUNCIONARIOS VALUES(?,?,?,?,?)");
@@ -39,7 +39,7 @@ public class DaoFuncionario {
 			new java.sql.Date(funcionario.getDataAdmissao().getTime()));
 			pstmt.setDouble(4, funcionario.getSalario());
 			pstmt.setString(5, funcionario.getEmail());
-			pstmt.executeUpdate();
+			return pstmt.executeUpdate()>0;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
